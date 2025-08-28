@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.15.2",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
     "bootstrap": "^5.3.8",
     "next": "15.5.2",
     "react": "19.1.0",
