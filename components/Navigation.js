@@ -1,21 +1,20 @@
 'use client';
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import Link from 'next/link';
 
 export default function Navigation() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
-        <Link href="/" className="navbar-brand">GEORGE K.</Link>
+        <a href="#home" className="navbar-brand">GEORGE K.</a>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link href="/about" className="nav-link">ABOUT</Link>
-            <Link href="/experiences" className="nav-link">EXPERIENCES</Link>
-            <Link href="/skills" className="nav-link">SKILLS</Link>
-            <Link href="/projects" className="nav-link">PROJECT</Link>
-            <Link href="/contact" className="nav-link">CONTACT</Link>
+            <a href="#about" className="nav-link">ABOUT</a>
+            <a href="#experience" className="nav-link">EXPERIENCE</a>
+            <a href="#skills" className="nav-link">SKILLS</a>
+            <a href="#projects" className="nav-link">PROJECTS</a>
+            <a href="#contact" className="nav-link">CONTACT</a>
           </Nav>
         </Navbar.Collapse>
       </Container>

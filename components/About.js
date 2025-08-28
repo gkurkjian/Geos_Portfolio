@@ -4,6 +4,8 @@ export default function About() {
     <>
       <h1>About Me</h1>
       <p>This is the about page of my portfolio.</p>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
     </>
   );
 }
