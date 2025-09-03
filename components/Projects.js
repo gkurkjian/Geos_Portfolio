@@ -27,7 +27,7 @@ const projects = [
   },
   {
     title: 'Software As A Service',
-    image: '/projects/saas.png',
+    image: 'assets/projects/saas.png',
     description: 'SaaS landing page with responsive design and pricing tables.',
     demoUrl: 'https://saas-authenticated-login-register.vercel.app/',
     githubUrl: 'https://github.com/gkurkjian/Saas',
