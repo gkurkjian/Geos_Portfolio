@@ -1,41 +1,67 @@
 // components/Experience.js
-import { Container, Row, Col, Card } from 'react-bootstrap';
+'use client';
+
+import { Container } from 'react-bootstrap';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
+import styles from '../styles/Experience.module.css';
+
+const experienceData = [
+  {
+    role: 'Freelance Web Developer',
+    company: 'Various Clients',
+    year: '2023 – Present',
+    description:
+      'Built fast and responsive websites using Next.js, React, and headless CMS tools. Designed clean UX flows, optimized SEO, and deployed to Vercel for brands and startups.',
+  },
+  {
+    role: 'UI/UX Designer',
+    company: 'Personal Projects',
+    year: '2022 – 2023',
+    description:
+      'Created design systems and wireframes using Figma. Focused on accessibility, motion design, and component-based layout structures across projects.',
+  },
+  {
+    role: 'Technical Writer',
+    company: 'Open Source',
+    year: '2021 – 2022',
+    description:
+      'Authored clear and concise documentation for open-source tools. Focused on developer onboarding, component APIs, and contribution guidelines.',
+  },
+];
 
 export default function Experience() {
-  const experienceData = [
-    {
-      role: 'Freelance Web Developer',
-      company: 'Various Clients',
-      year: '2023 – Present',
-      description:
-        'Collaborated with clients to design and build responsive websites using platforms like Wix and modern tools like Next.js. Responsible for site structure, layout, and deployment — helping brands establish their online presence.',
-    },
-  ];
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <div className="bg-white py-5" id="experience">
       <Container>
-        <Row className="justify-content-center text-center mb-4">
-          <Col md={8}>
-            <h2 className="fw-bold">Experience</h2>
-            <p className="lead">Practical work I've done with real clients.</p>
-          </Col>
-        </Row>
-        <Row className="g-4 justify-content-center">
+        <div className="text-center mb-5">
+          <h2 className="fw-bold">Experience</h2>
+          <p className="lead text-muted">Timeline of work and projects</p>
+        </div>
+
+        <div className={styles.timeline} ref={ref}>
           {experienceData.map((exp, idx) => (
-            <Col md={6} key={idx}>
-              <Card className="h-100 shadow-sm">
-                <Card.Body>
-                  <Card.Title>{exp.role}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    {exp.company} · {exp.year}
-                  </Card.Subtitle>
-                  <Card.Text>{exp.description}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
+            <motion.div
+              key={idx}
+              className={styles.cardWrapper}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
+            >
+              <div className={styles.marker} />
+              <div className={styles.card}>
+                <h5 className="fw-bold mb-1">{exp.role}</h5>
+                <p className="mb-0 text-muted">{exp.company} · {exp.year}</p>
+                <p className="mt-2 mb-0">{exp.description}</p>
+              </div>
+            </motion.div>
           ))}
-        </Row>
+        </div>
       </Container>
     </div>
   );
