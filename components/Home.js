@@ -2,14 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 export default function Home() {
-  const roles = ['Full Stack Developer', 'Problem Solver', 'Open-Source Enthusiast'];
+  const roles = ['Full Stack Developer', 'Problem Solver', 'Web Developer'];
   const [roleIndex, setRoleIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
   const [blink, setBlink] = useState(true);
 
+  // ===== Typewriter Logic =====
   useEffect(() => {
     const blinkTimer = setInterval(() => setBlink((b) => !b), 500);
     return () => clearInterval(blinkTimer);
@@ -17,13 +19,14 @@ export default function Home() {
 
   useEffect(() => {
     const current = roles[roleIndex];
-    const pauseFull = 900;
+    const pauseFull = 1000;
     const pauseEmpty = 400;
 
     if (!deleting && subIndex === current.length) {
       const t = setTimeout(() => setDeleting(true), pauseFull);
       return () => clearTimeout(t);
     }
+
     if (deleting && subIndex === 0) {
       const t = setTimeout(() => {
         setDeleting(false);
@@ -32,13 +35,15 @@ export default function Home() {
       return () => clearTimeout(t);
     }
 
-    const speed = deleting ? 35 : 70;
-    const timer = setTimeout(() => setSubIndex((s) => s + (deleting ? -1 : 1)), speed);
+    const speed = deleting ? 35 : 60;
+    const timer = setTimeout(() => {
+      setSubIndex((s) => s + (deleting ? -1 : 1));
+    }, speed);
     return () => clearTimeout(timer);
-  }, [subIndex, deleting, roleIndex, roles]);
+  }, [subIndex, deleting, roleIndex]);
 
+  // ===== Mouse Background Movement =====
   const heroRef = useRef(null);
-
   useEffect(() => {
     const el = heroRef.current;
     if (!el) return;
@@ -50,6 +55,7 @@ export default function Home() {
       el.style.setProperty('--mx', `${x}%`);
       el.style.setProperty('--my', `${y}%`);
     };
+
     const onLeave = () => {
       el.style.setProperty('--mx', '50%');
       el.style.setProperty('--my', '35%');
@@ -63,24 +69,51 @@ export default function Home() {
     };
   }, []);
 
-  return (
-    <div ref={heroRef} className="hero position-relative bg-dark text-white py-5 d-flex align-items-center">
-      <Container>
-        <Row className="justify-content-center text-center w-100">
-          <Col md={10} lg={8}>
-            <h1 className="display-3 fw-bold fade-up-1">Hi, I&apos;m George K.</h1>
+  // ===== Animation Variants =====
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
 
-            <p className="lead mb-4 fade-up-2">
+  return (
+    <div ref={heroRef} className="hero position-relative bg-dark text-white d-flex align-items-center">
+      <Container className="text-center">
+        <Row className="justify-content-center w-100">
+          <Col md={10} lg={8}>
+            <motion.h1
+              className="display-4 fw-bold mb-2"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.7 }}
+            >
+              Hi, I&apos;m George K.
+            </motion.h1>
+
+            <motion.p
+              className="lead mb-3"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
               <span className="muted">I&apos;m a </span>
               <span className="typed">
                 {roles[roleIndex].slice(0, subIndex)}
                 <span className={`caret ${blink ? 'show' : ''}`} />
               </span>
-            </p>
+            </motion.p>
 
-            <Button variant="outline-light" size="lg" href="#projects" className="fade-up-3">
-              View My Work
-            </Button>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              <Button variant="outline-light" size="lg" href="#projects">
+                View My Work
+              </Button>
+            </motion.div>
           </Col>
         </Row>
       </Container>
@@ -96,6 +129,7 @@ export default function Home() {
 
         .hero {
           min-height: 70vh;
+          padding-top: var(--nav-h);
           --mx: 50%;
           --my: 35%;
           background:
@@ -105,30 +139,6 @@ export default function Home() {
           transition: background-position 0.2s ease-out;
           isolation: isolate;
           overflow: hidden;
-        }
-
-        .fade-up-1,
-        .fade-up-2,
-        .fade-up-3 {
-          opacity: 0;
-          transform: translateY(12px);
-          animation: fadeUp 0.7s ease forwards;
-        }
-        .fade-up-1 {
-          animation-delay: 0.05s;
-        }
-        .fade-up-2 {
-          animation-delay: 0.2s;
-        }
-        .fade-up-3 {
-          animation-delay: 0.35s;
-        }
-
-        @keyframes fadeUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
         }
 
         .muted {
