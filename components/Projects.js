@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import ProjectCard from './ProjectCard';
 
 const projects = [
@@ -10,6 +10,7 @@ const projects = [
     description: 'Next.js 14, App Router, server components, responsive UI.',
     demoUrl: 'https://poslty-blog.vercel.app/',
     githubUrl: 'https://github.com/gkurkjian/Poslty_Blog',
+    tech: ['nextjs', 'js', 'vercel'],
   },
   {
     title: 'Art-Museum Project',
@@ -17,6 +18,7 @@ const projects = [
     description: 'Product listing, cart, and checkout mock with REST API.',
     demoUrl: 'https://web-422-assignment6-gkurkjian.vercel.app/',
     githubUrl: 'https://github.com/gkurkjian/WEB422-Assignment6',
+    tech: ['react', 'restapi', 'bootstrap'],
   },
   {
     title: 'Weather-App',
@@ -24,6 +26,7 @@ const projects = [
     description: 'Analytics dashboard with auth and charts.',
     demoUrl: 'https://weather-app-geo.vercel.app/',
     githubUrl: 'https://github.com/gkurkjian/Weather_App',
+    tech: ['react', 'node', 'chartjs'],
   },
   {
     title: 'Software As A Service',
@@ -31,6 +34,7 @@ const projects = [
     description: 'SaaS landing page with responsive design and pricing tables.',
     demoUrl: 'https://saas-authenticated-login-register.vercel.app/',
     githubUrl: 'https://github.com/gkurkjian/Saas',
+    tech: ['nextjs', 'bootstrap', 'auth'],
   },
 ];
 
@@ -39,24 +43,19 @@ export default function Projects() {
     <section id="projects" className="bg-light py-5">
       <Container>
         <Row className="justify-content-center text-center mb-4">
-          <div className="col-md-8">
+          <Col md={8}>
             <h2 className="fw-bold">Projects</h2>
             <p className="lead">Selected work with live demos and source code.</p>
-          </div>
+          </Col>
         </Row>
 
-        <div className="d-flex flex-nowrap overflow-auto gap-4 pb-3">
-        {projects.map((p) => (
-            <div
-            key={p.title}
-            className="flex-shrink-0"
-            style={{ width: '300px', flex: '0 0 auto' }}
-            >
-            <ProjectCard p={p} className="h-100" />
-            </div>
-        ))}
-        </div>
-
+        <Row className="g-4">
+          {projects.map((p) => (
+            <Col key={p.title} xs={12} sm={6} lg={4} xl={3}>
+              <ProjectCard p={p} className="h-100" />
+            </Col>
+          ))}
+        </Row>
       </Container>
     </section>
   );
