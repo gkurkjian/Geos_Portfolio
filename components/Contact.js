@@ -3,6 +3,7 @@
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import SectionWrapper from '../components/SectionWrapper';
 
 export default function Contact() {
   const socialLinks = [
@@ -27,7 +28,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="contact-section">
+    <SectionWrapper id="contact" className="by-white contact-section">
       <Container>
         {/* Heading */}
         <motion.div
@@ -146,6 +147,6 @@ export default function Contact() {
           }
         }
       `}</style>
-    </section>
+    </SectionWrapper>
   );
 }

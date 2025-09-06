@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import styles from '../styles/Experience.module.css';
+import SectionWrapper from '../components/SectionWrapper'
 
 const experienceData = [
   {
@@ -37,32 +38,34 @@ export default function Experience() {
   });
 
   return (
-    <div className="bg-white py-5" id="experience">
-      <Container>
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Experience</h2>
-          <p className="lead text-muted">Timeline of work and projects</p>
-        </div>
+    <SectionWrapper id="experience" className="bg-white">
+      <div className="bg-white" id="experience">
+        <Container>
+          <div className="text-center mb-5">
+            <h2 className="fw-bold">Experience</h2>
+            <p className="lead text-muted">Timeline of work and projects</p>
+          </div>
 
-        <div className={styles.timeline} ref={ref}>
-          {experienceData.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              className={styles.cardWrapper}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
-            >
-              <div className={styles.marker} />
-              <div className={styles.card}>
-                <h5 className="fw-bold mb-1">{exp.role}</h5>
-                <p className="mb-0 text-muted">{exp.company} · {exp.year}</p>
-                <p className="mt-2 mb-0">{exp.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </Container>
-    </div>
+          <div className={styles.timeline} ref={ref}>
+            {experienceData.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                className={styles.cardWrapper}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+              >
+                <div className={styles.marker} />
+                <div className={styles.card}>
+                  <h5 className="fw-bold mb-1">{exp.role}</h5>
+                  <p className="mb-0 text-muted">{exp.company} · {exp.year}</p>
+                  <p className="mt-2 mb-0">{exp.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </div>
+    </SectionWrapper>
   );
 }

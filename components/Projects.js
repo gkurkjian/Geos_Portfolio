@@ -2,6 +2,7 @@
 
 import { Container, Row, Col } from 'react-bootstrap';
 import ProjectCard from './ProjectCard';
+import SectionWrapper from '../components/SectionWrapper';
 
 const projects = [
   {
@@ -40,12 +41,12 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-light py-5">
+    <SectionWrapper id="projects" className="bg-light">
       <Container>
-        <Row className="justify-content-center text-center mb-4">
+        <Row className="justify-content-center text-center mb-5">
           <Col md={8}>
             <h2 className="fw-bold">Projects</h2>
-            <p className="lead">Selected work with live demos and source code.</p>
+            <p className="lead text-muted">Selected work with live demos and source code.</p>
           </Col>
         </Row>
 
@@ -57,6 +58,6 @@ export default function Projects() {
           ))}
         </Row>
       </Container>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -1,22 +1,17 @@
 'use client';
 
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import SectionWrapper from '../components/SectionWrapper';
 
 export default function About() {
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="bg-white py-6 py-lg-7" id="about" ref={ref}>
+    <SectionWrapper id="about" className="bg-white">
       <Container>
         {/* Header */}
         <Row className="justify-content-center text-center mb-5">
@@ -25,7 +20,8 @@ export default function About() {
               className="fw-bold mb-3"
               variants={fadeUp}
               initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
               About Me
@@ -34,7 +30,8 @@ export default function About() {
               className="lead text-muted"
               variants={fadeUp}
               initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               I&apos;m George K., a full stack developer passionate about building clean, performant, and user-focused applications. I blend design and code to craft digital experiences that matter.
@@ -66,7 +63,8 @@ export default function About() {
                 className="h-100"
                 variants={fadeUp}
                 initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
                 <Card className="border-0 shadow-sm h-100 p-4 rounded-4">
@@ -81,17 +79,10 @@ export default function About() {
       </Container>
 
       <style jsx>{`
-        section {
+        :global(section#about) {
           scroll-margin-top: 80px;
         }
-
-        @media (min-width: 992px) {
-          .py-lg-7 {
-            padding-top: 6rem !important;
-            padding-bottom: 6rem !important;
-          }
-        }
       `}</style>
-    </section>
+    </SectionWrapper>
   );
 }

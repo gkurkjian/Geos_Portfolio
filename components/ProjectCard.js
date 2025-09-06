@@ -17,6 +17,7 @@ import {
   SiAuth0,
   SiOpenapiinitiative,
 } from 'react-icons/si';
+import SectionWrapper from '../components/SectionWrapper';
 
 export default function ProjectCard({ p, className = "" }) {
   const [flipped, setFlipped] = useState(false);

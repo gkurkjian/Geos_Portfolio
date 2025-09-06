@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import SectionWrapper from '../components/SectionWrapper';
 
 export default function Home() {
   const roles = ['Full Stack Developer', 'Problem Solver', 'Web Developer'];
