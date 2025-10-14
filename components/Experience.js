@@ -39,8 +39,7 @@ export default function Experience() {
 
   return (
     <SectionWrapper id="experience" className="bg-white">
-      <div className="bg-white" id="experience">
-        <Container>
+      <Container>
           <div className="text-center mb-5">
             <h2 className="fw-bold">Experience</h2>
             <p className="lead text-muted">Timeline of work and projects</p>
@@ -64,8 +63,7 @@ export default function Experience() {
               </motion.div>
             ))}
           </div>
-        </Container>
-      </div>
+      </Container>
     </SectionWrapper>
   );
 }

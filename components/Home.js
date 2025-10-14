@@ -12,6 +12,8 @@ export default function Home() {
   const [deleting, setDeleting] = useState(false);
   const [blink, setBlink] = useState(true);
 
+  const rolesLength = roles.length;
+
   // ===== Typewriter Logic =====
   useEffect(() => {
     const blinkTimer = setInterval(() => setBlink((b) => !b), 500);
@@ -31,7 +33,7 @@ export default function Home() {
     if (deleting && subIndex === 0) {
       const t = setTimeout(() => {
         setDeleting(false);
-        setRoleIndex((i) => (i + 1) % roles.length);
+        setRoleIndex((i) => (i + 1) % rolesLength);
       }, pauseEmpty);
       return () => clearTimeout(t);
     }
@@ -41,7 +43,7 @@ export default function Home() {
       setSubIndex((s) => s + (deleting ? -1 : 1));
     }, speed);
     return () => clearTimeout(timer);
-  }, [subIndex, deleting, roleIndex]);
+  }, [subIndex, deleting, roleIndex, rolesLength]);
 
   // ===== Mouse Background Movement =====
   const heroRef = useRef(null);
@@ -166,6 +168,51 @@ export default function Home() {
 
         .caret.show {
           opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          .hero {
+            min-height: 60vh;
+            padding: var(--nav-h) 1rem 2rem;
+          }
+
+          .hero :global(.display-4) {
+            font-size: 2.5rem;
+          }
+
+          .hero :global(.lead) {
+            font-size: 1.1rem;
+          }
+
+          .hero :global(.btn-lg) {
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero {
+            min-height: 50vh;
+          }
+
+          .hero :global(.display-4) {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+          }
+
+          .hero :global(.lead) {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .hero :global(.btn-lg) {
+            font-size: 0.9rem;
+            padding: 0.4rem 1.2rem;
+          }
+
+          .caret {
+            width: 8px;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {

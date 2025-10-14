@@ -19,8 +19,7 @@ const Icon = ({ title, children }) => (
 export default function Skills() {
   return (
     <SectionWrapper id="skills" className="bg-light">
-      <div className="bg-light" id="skills">
-        <Container>
+      <Container>
           <Row className="justify-content-center text-center mb-4">
             <Col md={8}>
               <h2 className="fw-bold">Skills</h2>
@@ -28,11 +27,10 @@ export default function Skills() {
             </Col>
           </Row>
 
-          {/* All cards in the SAME row so they sit side-by-side */}
           <Row className="g-4 justify-content-center">
-            {/* ===== Front End ===== */}
-            <Col sm={10} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-4 bg-white">
+            {/* Front End */}
+            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
+              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
                 <div className="d-flex justify-content-center mb-3">
                   <DotLottieReact
                     src="https://lottie.host/3857cbd4-5942-48f0-b298-f8de1d218f11/KpttzjFMe6.lottie"
@@ -41,7 +39,7 @@ export default function Skills() {
                     style={{ width: 180, height: 180 }}
                   />
                 </div>
-                <Card.Body>
+                <Card.Body className="p-0">
                   <Card.Title className="fw-bold fs-4">Front End</Card.Title>
                   <hr className="opacity-25" />
                   <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
@@ -73,9 +71,9 @@ export default function Skills() {
               </Card>
             </Col>
 
-            {/* ===== Back End ===== */}
-            <Col sm={10} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-4 bg-white">
+            {/* Back End */}
+            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
+              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
                 <div className="d-flex justify-content-center mb-3">
                   <DotLottieReact
                     src="https://lottie.host/3a0af924-482b-4e4d-8f0c-a5e09c3956e7/udZ5OpchS9.lottie"
@@ -84,7 +82,7 @@ export default function Skills() {
                     style={{ width: 180, height: 180 }}
                   />
                 </div>
-                <Card.Body>
+                <Card.Body className="p-0">
                   <Card.Title className="fw-bold fs-4">Back End</Card.Title>
                   <hr className="opacity-25" />
                   <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
@@ -114,8 +112,8 @@ export default function Skills() {
             </Col>
 
             {/* ===== Cloud Computing ===== */}
-            <Col sm={10} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-4 bg-white">
+            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
+              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
                 <div className="d-flex justify-content-center mb-3">
                   <DotLottieReact
                     src="https://lottie.host/c36feb85-fbca-4918-a31c-0e145f4fe240/oQBCcenlTV.lottie"
@@ -124,7 +122,7 @@ export default function Skills() {
                     style={{ width: 180, height: 180 }}
                   />
                 </div>
-                <Card.Body>
+                <Card.Body className="p-0">
                   <Card.Title className="fw-bold fs-4">Cloud Computing</Card.Title>
                   <hr className="opacity-25" />
                   <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
@@ -146,10 +144,9 @@ export default function Skills() {
               </Card>
             </Col>
 
-
-            {/* ===== Cloud Computing ===== */}
-            <Col sm={10} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-4 bg-white">
+            {/* Project Management */}
+            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
+              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
                 <div className="d-flex justify-content-center mb-3">
                   <DotLottieReact
                     src="https://lottie.host/403b85e6-6028-41a9-8339-416e76264ed7/ECj06O0R3K.lottie"
@@ -158,8 +155,8 @@ export default function Skills() {
                     style={{ width: 180, height: 180 }}
                   />
                 </div>
-                <Card.Body>
-                  <Card.Title className="fw-bold fs-4">Project Managment</Card.Title>
+                <Card.Body className="p-0">
+                  <Card.Title className="fw-bold fs-4">Project Management</Card.Title>
                   <hr className="opacity-25" />
                   <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
                     {/* Git */}
@@ -183,8 +180,7 @@ export default function Skills() {
             </Col>
 
           </Row>
-        </Container>
-      </div>
+      </Container>
     </SectionWrapper>
   );
 }
