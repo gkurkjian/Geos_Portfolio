@@ -16,20 +16,21 @@ const experienceData = [
       'Built fast and responsive websites using Next.js, React, and headless CMS tools. Designed clean UX flows, optimized SEO, and deployed to Vercel for brands and startups.',
   },
   {
-    role: 'UI/UX Designer',
+    role: 'Back-end Developer',
     company: 'Personal Projects',
-    year: '2022 – 2023',
+    year: '2022 – Present',
     description:
-      'Created design systems and wireframes using Figma. Focused on accessibility, motion design, and component-based layout structures across projects.',
+      'Developed RESTful APIs and integrated database systems to handle user data efficiently. Implemented CRUD operations, authentication, and optimized performance for smooth client-server interaction.',
   },
   {
-    role: 'Technical Writer',
-    company: 'Open Source',
-    year: '2021 – 2022',
+    role: 'Front-end Developer',
+    company: 'Personal Projects',
+    year: '2021 – Present',
     description:
-      'Authored clear and concise documentation for open-source tools. Focused on developer onboarding, component APIs, and contribution guidelines.',
+      'Created modern and interactive user interfaces using Nextjs, React, JavaScript, and CSS. Focused on responsive design, accessibility, and seamless integration with back-end services.',
   },
 ];
+
 
 export default function Experience() {
   const { ref, inView } = useInView({
