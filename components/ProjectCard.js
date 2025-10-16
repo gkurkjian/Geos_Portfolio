@@ -54,11 +54,11 @@ export default function ProjectCard({ p, className = "" }) {
         {/* Front */}
         <div className="flip-card-face flip-card-front">
           <div className="screenshot" style={{ backgroundImage: `url(${p.image})` }} />
-          <div className="p-3 text-center">
-            <h5 className="fw-bold mb-2">{p.title}</h5>
-            <div className="d-flex justify-content-center gap-2 mt-2 flex-wrap">
+          <div className="p-2 text-center">
+            <h6 className="fw-bold mb-1">{p.title}</h6>
+            <div className="d-flex justify-content-center gap-2 mt-1 flex-wrap">
               {p.tech?.map((tech, idx) => (
-                <span key={idx} style={{ fontSize: '1.2rem' }}>
+                <span key={idx} style={{ fontSize: '1rem' }}>
                   {techIcons[tech]}
                 </span>
               ))}
@@ -68,13 +68,13 @@ export default function ProjectCard({ p, className = "" }) {
 
         {/* Back */}
         <div className="flip-card-face flip-card-back">
-          <div className="p-3 d-flex flex-column justify-content-between h-100">
+          <div className="p-2 d-flex flex-column justify-content-between h-100">
             <div>
-              <h5 className="fw-bold mb-2">{p.title}</h5>
+              <h6 className="fw-bold mb-2">{p.title}</h6>
               <p className="text-muted small m-0">{p.description}</p>
             </div>
 
-            <div className="text-center mt-3 d-flex justify-content-center gap-2 flex-wrap">
+            <div className="text-center mt-2 d-flex justify-content-center gap-2 flex-wrap">
               {p.demoUrl && (
                 <Button
                   as={Link}
@@ -114,20 +114,24 @@ export default function ProjectCard({ p, className = "" }) {
       <style jsx>{`
         .flip-card {
           perspective: 1000px;
-          border-radius: 1rem;
+          border-radius: 0.75rem;
           overflow: hidden;
           background: #fff;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
           height: 100%;
-          min-height: 380px;
+          min-height: 280px;
           cursor: pointer;
           outline: none;
+          transition: box-shadow 0.3s ease;
+        }
+        .flip-card:hover {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
         .flip-card-inner {
           position: relative;
           width: 100%;
           height: 100%;
-          min-height: 380px;
+          min-height: 280px;
           transform-style: preserve-3d;
           transition: transform 0.6s cubic-bezier(0.2, 0.75, 0.25, 1);
         }
@@ -148,7 +152,7 @@ export default function ProjectCard({ p, className = "" }) {
           flex-direction: column;
           justify-content: space-between;
           height: 100%;
-          min-height: 320px;
+          min-height: 280px;
         }
         .flip-card-front {
           background: #fff;
@@ -158,7 +162,7 @@ export default function ProjectCard({ p, className = "" }) {
           background: #f8f9fa;
         }
         .screenshot {
-          height: 65%;
+          height: 70%;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -174,8 +178,22 @@ export default function ProjectCard({ p, className = "" }) {
 
         .button-row :global(a.btn) {
           flex: 0 1 auto;
-          min-width: 120px;
+          min-width: 100px;
           white-space: nowrap;
+          font-size: 0.875rem;
+          padding: 0.375rem 0.75rem;
+        }
+
+        @media (max-width: 576px) {
+          .flip-card {
+            min-height: 260px;
+          }
+          .flip-card-inner {
+            min-height: 260px;
+          }
+          .flip-card-face {
+            min-height: 260px;
+          }
         }
       `}</style>
     </div>

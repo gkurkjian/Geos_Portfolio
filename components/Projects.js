@@ -42,17 +42,17 @@ const projects = [
 export default function Projects() {
   return (
     <SectionWrapper id="projects" className="bg-light">
-      <Container>
-        <Row className="justify-content-center text-center mb-5">
-          <Col md={8}>
+      <Container className="px-3">
+        <Row className="justify-content-center text-center mb-4">
+          <Col xs={12} md={8}>
             <h2 className="fw-bold">Projects</h2>
             <p className="lead text-muted">Selected work with live demos and source code.</p>
           </Col>
         </Row>
 
-        <Row className="g-4">
+        <Row className="g-3 g-md-4 justify-content-center">
           {projects.map((p) => (
-            <Col key={p.title} xs={12} sm={6} lg={4} xl={3}>
+            <Col key={p.title} xs={12} sm={6} md={6} lg={4} xl={3}>
               <ProjectCard p={p} className="h-100" />
             </Col>
           ))}

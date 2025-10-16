@@ -12,10 +12,10 @@ export default function About() {
 
   return (
     <SectionWrapper id="about" className="bg-white">
-      <Container>
+      <Container className="px-3 px-md-4">
         {/* Header */}
         <Row className="justify-content-center text-center mb-5">
-          <Col md={8}>
+          <Col xs={12} md={8}>
             <motion.h2
               className="fw-bold mb-3"
               variants={fadeUp}
@@ -58,7 +58,7 @@ export default function About() {
               text: 'Clarity, curiosity, collaboration — and clean code always.',
             },
           ].map((item, index) => (
-            <Col md={6} lg={4} key={index}>
+            <Col xs={12} sm={10} md={6} lg={4} key={index}>
               <motion.div
                 className="h-100"
                 variants={fadeUp}

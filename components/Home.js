@@ -80,9 +80,9 @@ export default function Home() {
 
   return (
     <div ref={heroRef} className="hero position-relative bg-dark text-white d-flex align-items-center">
-      <Container className="text-center">
-        <Row className="justify-content-center w-100">
-          <Col md={10} lg={8}>
+      <Container className="text-center px-3">
+        <Row className="justify-content-center">
+          <Col xs={12} md={10} lg={8}>
             <motion.h1
               className="display-4 fw-bold mb-2"
               variants={fadeUp}

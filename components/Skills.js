@@ -19,30 +19,30 @@ const Icon = ({ title, children }) => (
 export default function Skills() {
   return (
     <SectionWrapper id="skills" className="bg-light">
-      <Container>
+      <Container className="px-3">
           <Row className="justify-content-center text-center mb-4">
-            <Col md={8}>
+            <Col xs={12} md={8}>
               <h2 className="fw-bold">Skills</h2>
               <p className="lead">Technologies I work with regularly</p>
             </Col>
           </Row>
 
-          <Row className="g-4 justify-content-center">
+          <Row className="g-3 g-md-4 justify-content-center">
             {/* Front End */}
-            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
-                <div className="d-flex justify-content-center mb-3">
+            <Col xs={12} sm={6} md={6} lg={3}>
+              <Card className="text-center border-0 shadow-sm rounded-4 h-100 p-3 bg-white">
+                <div className="d-flex justify-content-center mb-2">
                   <DotLottieReact
                     src="https://lottie.host/3857cbd4-5942-48f0-b298-f8de1d218f11/KpttzjFMe6.lottie"
                     loop
                     autoplay
-                    style={{ width: 180, height: 180 }}
+                    style={{ width: 120, height: 120 }}
                   />
                 </div>
                 <Card.Body className="p-0">
-                  <Card.Title className="fw-bold fs-4">Front End</Card.Title>
-                  <hr className="opacity-25" />
-                  <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
+                  <Card.Title className="fw-bold fs-5 mb-2">Front End</Card.Title>
+                  <hr className="opacity-25 my-2" />
+                  <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
                     <Icon title="Next.js">
                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/>
@@ -72,20 +72,20 @@ export default function Skills() {
             </Col>
 
             {/* Back End */}
-            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
-                <div className="d-flex justify-content-center mb-3">
+            <Col xs={12} sm={6} md={6} lg={3}>
+              <Card className="text-center border-0 shadow-sm rounded-4 h-100 p-3 bg-white">
+                <div className="d-flex justify-content-center mb-2">
                   <DotLottieReact
                     src="https://lottie.host/3a0af924-482b-4e4d-8f0c-a5e09c3956e7/udZ5OpchS9.lottie"
                     loop
                     autoplay
-                    style={{ width: 180, height: 180 }}
+                    style={{ width: 120, height: 120 }}
                   />
                 </div>
                 <Card.Body className="p-0">
-                  <Card.Title className="fw-bold fs-4">Back End</Card.Title>
-                  <hr className="opacity-25" />
-                  <div className="d-flex justify-content-center flex-wrap gap-3 mt-3">
+                  <Card.Title className="fw-bold fs-5 mb-2">Back End</Card.Title>
+                  <hr className="opacity-25 my-2" />
+                  <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
                     <Icon title="Node.js">
                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/>
@@ -112,20 +112,20 @@ export default function Skills() {
             </Col>
 
             {/* ===== Cloud Computing ===== */}
-            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
-                <div className="d-flex justify-content-center mb-3">
+            <Col xs={12} sm={6} md={6} lg={3}>
+              <Card className="text-center border-0 shadow-sm rounded-4 h-100 p-3 bg-white">
+                <div className="d-flex justify-content-center mb-2">
                   <DotLottieReact
                     src="https://lottie.host/c36feb85-fbca-4918-a31c-0e145f4fe240/oQBCcenlTV.lottie"
                     loop
                     autoplay
-                    style={{ width: 180, height: 180 }}
+                    style={{ width: 120, height: 120 }}
                   />
                 </div>
                 <Card.Body className="p-0">
-                  <Card.Title className="fw-bold fs-4">Cloud Computing</Card.Title>
-                  <hr className="opacity-25" />
-                  <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
+                  <Card.Title className="fw-bold fs-5 mb-2">Cloud Computing</Card.Title>
+                  <hr className="opacity-25 my-2" />
+                  <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
                     {/* Vercel */}
                     <Icon title="Vercel">
                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -145,20 +145,20 @@ export default function Skills() {
             </Col>
 
             {/* Project Management */}
-            <Col xs={12} sm={6} md={6} lg={4} xl={3}>
-              <Card className="text-center border-0 shadow rounded-4 h-100 p-3 p-md-4 bg-white">
-                <div className="d-flex justify-content-center mb-3">
+            <Col xs={12} sm={6} md={6} lg={3}>
+              <Card className="text-center border-0 shadow-sm rounded-4 h-100 p-3 bg-white">
+                <div className="d-flex justify-content-center mb-2">
                   <DotLottieReact
                     src="https://lottie.host/403b85e6-6028-41a9-8339-416e76264ed7/ECj06O0R3K.lottie"
                     loop
                     autoplay
-                    style={{ width: 180, height: 180 }}
+                    style={{ width: 120, height: 120 }}
                   />
                 </div>
                 <Card.Body className="p-0">
-                  <Card.Title className="fw-bold fs-4">Project Management</Card.Title>
-                  <hr className="opacity-25" />
-                  <div className="d-flex justify-content-center flex-wrap gap-4 mt-3">
+                  <Card.Title className="fw-bold fs-5 mb-2">Project Management</Card.Title>
+                  <hr className="opacity-25 my-2" />
+                  <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
                     {/* Git */}
                     <Icon title="Git">
                       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
