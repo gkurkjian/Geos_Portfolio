@@ -1,11 +1,65 @@
 'use client';
 
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { useState } from 'react';
+import { Container, Row, Col, Form, Button, Card, Alert, Spinner } from 'react-bootstrap';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: 'Message sent successfully! I\'ll get back to you soon.'
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus({
+          type: 'danger',
+          message: data.message || 'Failed to send message. Please try again.'
+        });
+      }
+    } catch (error) {
+      setStatus({
+        type: 'danger',
+        message: 'An error occurred. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const socialLinks = [
     {
       icon: <FaGithub />,
@@ -22,7 +76,7 @@ export default function Contact() {
     {
       icon: <FaEnvelope />,
       label: 'Email',
-      href: 'mailto:georgekurkjian@gmail.com',
+      href: 'mailto:george@geostacklabs.com?subject=Contact from Portfolio&body=Hi George,',
       bg: '#6366f1',
     },
   ];
@@ -53,24 +107,74 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <Card className="p-4 shadow border-0 rounded-4 h-100">
-              <Form>
+              {status.message && (
+                <Alert variant={status.type} onClose={() => setStatus({ type: '', message: '' })} dismissible>
+                  {status.message}
+                </Alert>
+              )}
+
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label className="fw-semibold">Name</Form.Label>
-                  <Form.Control type="text" placeholder="Your Name" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Your Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    disabled={isSubmitting}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formEmail">
                   <Form.Label className="fw-semibold">Email</Form.Label>
-                  <Form.Control type="email" placeholder="you@email.com" />
+                  <Form.Control
+                    type="email"
+                    placeholder="you@email.com"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    disabled={isSubmitting}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-4" controlId="formMessage">
                   <Form.Label className="fw-semibold">Message</Form.Label>
-                  <Form.Control as="textarea" rows={4} placeholder="Type your message here..." />
+                  <Form.Control
+                    as="textarea"
+                    rows={4}
+                    placeholder="Type your message here..."
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    disabled={isSubmitting}
+                  />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" className="w-100 fw-semibold">
-                  Send Message
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="w-100 fw-semibold"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                        className="me-2"
+                      />
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </Button>
               </Form>
             </Card>
